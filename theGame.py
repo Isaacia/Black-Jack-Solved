@@ -9,5 +9,7 @@ deck = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10,
 
 random.shuffle(deck)    #
 
-p1c1 = deck.pop(0)
-p1c2 = deck.pop(0)
+dealerC1 = deck.pop(0)
+dealerC2 = deck.pop(0)
+playerC1 = deck.pop(0)
+playerC2 = deck.pop(0)
