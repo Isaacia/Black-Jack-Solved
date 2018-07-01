@@ -67,11 +67,8 @@ pendingDeck += [dealerC1, dealerC2, playerC1, playerC2]
 countA = 0
 dealerResult = 0
 Count = 0
-if dealerC1 == "A":
-	#ask player for insurance
 
-if dealerC1 == "A":
-	dealerC1 = 11
+if dealerC1 == 11:
 	countA += 1
 
 if dealerC2 == "A":
