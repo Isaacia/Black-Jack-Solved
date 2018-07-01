@@ -113,7 +113,7 @@ else:
 		print("Player Lose!")
 		playerWinCount -= supposeWin
 	else:
-		print("Draw!")
+		print("Push!")
 		
 usedDeck += pendingDeck
 pendingDeck = []
