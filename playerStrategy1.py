@@ -63,12 +63,12 @@ def RecursiveDecision(str)
 	#DoubleDown
 	if str == "D":
 		Count = playerC1 + playerC2
-		playerResult = Count.Hit()
+		playerResult = Hit()
 		supposeWin = 2
 	#Hit
 	if str == "H":
 		Count = playerC1 + playerC2
-		Hitted = Count.Hit()
+		Hitted = Hit()
 		playerResult = Hitted
 		if countA > 0:
 			strategyChoice = softStrategyList[Count - 13][dealerC1 - 2]
@@ -85,14 +85,16 @@ def RecursiveDecision(str)
 if playerC1 == playerC2:	
  	strategyChoice = doubleStrategyList[playerC1 - 2][dealerC1 - 2]
 	if strategyChoice == "P"
-		countA1 = 0
-		countA2 = 0
+		countA = 0
 		playerResult1 = 0
 		playerResult2 = 0
 #		Count1 = playerC1
 #		Count2 = playerC2
 		Count = playerC1
-		playerResult1 = Count.Hit()
+		playerResult1 = Hit()
+		if playerC1 == "A":
+			countA += 1
+		
 
 	
 
