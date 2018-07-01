@@ -2,6 +2,9 @@
 countA = 0
 playerResult = 0
 Count = 0
+supposeWin1 = 0
+supposeWin2 = 0
+strategyChoice = "S"
 
 doubleStrategyList = [["P", "P", "P", "P", "P", "P", "H", "H", "H", "H"],
 	["P", "P", "P", "P", "P", "P", "H", "H", "H", "H"], 
@@ -50,7 +53,8 @@ if playerC2 == "A":
 	
 if dealerC1 == "A":
 	dealerC1 = 11
-	
+
+playerResult = playerC1 + playerC2
 def RecursiveDecision(str)
 	#Surrender
 	if str == "Sr":
@@ -58,16 +62,15 @@ def RecursiveDecision(str)
 		supposeWin = 0.5
 	#Stand
 	if str == "S":
-		playerResult = playerC1 + playerC2
 		supposeWin = 1
 	#DoubleDown
 	if str == "D":
-		Count = playerC1 + playerC2
+		Count = playerResult
 		playerResult = Hit()
 		supposeWin = 2
 	#Hit
 	if str == "H":
-		Count = playerC1 + playerC2
+		Count = playerResult
 		Hitted = Hit()
 		playerResult = Hitted
 		if countA > 0:
@@ -88,25 +91,46 @@ if playerC1 == playerC2:
 		countA = 0
 		playerResult1 = 0
 		playerResult2 = 0
-#		Count1 = playerC1
-#		Count2 = playerC2
+#First Hand
 		Count = playerC1
 		playerResult1 = Hit()
 		if playerC1 == "A":
 			countA += 1
+		if countA > 0:
+			strategyChoice = softStrategyList[Count - 13][dealerC1 - 2]
+		else:
+			strategyChoice = hardStrategyList[19 - playerC1 - playerC2][dealerC1 - 2]
+		RecursiveDecision(str)
+		supposeWin1 = supposeWin
+#Second Hand
+		supposeWin = 0
+		countA = 0
+		Count = playerC2
+		playerResult2 = Hit()
+		if playerC2 == "A":
+			countA += 1
+		if countA > 0:
+			strategyChoice = softStrategyList[Count - 13][dealerC1 - 2]
+		else:
+			strategyChoice = hardStrategyList[19 - playerC1 - playerC2][dealerC1 - 2]
+		RecursiveDecision(strategyChoice)
+		supposeWin2 = supposeWin
+	else:
+		RecursiveDecision(strategyChoice)
 		
+			
 
 	
 
-#soft case
-elif playerC1 == "A":
-	strategyChoice = softStrategyList[playerC2 - 2][dealerC1 - 2]
-elif playerC2 == "A":
-	strategyChoice = softStrategyList[playerC1 - 2][dealerC1 - 2]
+####################### soft case #######################
+elif playerC1 == "A" or playerC2 == "A":
+	strategyChoice = softStrategyList[playerC2 + playerC1 - 13][dealerC1 - 2]
+	RecursiveDecision(strategyChoice)
 
-#hard case
+####################### hard case #######################
 else:
 	strategyChoice = hardStrategyList[19 - playerC1 - playerC2][dealerC1 - 2]
+	RecursiveDecision(strategyChoice)
 
 	
 	
