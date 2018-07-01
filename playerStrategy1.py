@@ -4,6 +4,8 @@ playerResult = 0
 Count = 0
 supposeWin1 = 0
 strategyChoice = "S"
+playerResult1 = 0
+playerResult2 = 0
 
 doubleStrategyList = [["P", "P", "P", "P", "P", "P", "H", "H", "H", "H"],
 	["P", "P", "P", "P", "P", "P", "H", "H", "H", "H"], 
@@ -99,7 +101,7 @@ if playerC1 == playerC2:
 			strategyChoice = softStrategyList[Count - 13][dealerC1 - 2]
 		else:
 			strategyChoice = hardStrategyList[19 - playerC1 - playerC2][dealerC1 - 2]
-		RecursiveDecision(str)
+		playerResult1 = RecursiveDecision(str)
 		supposeWin1 = supposeWin
 #Second Hand
 		supposeWin = 0
@@ -112,9 +114,9 @@ if playerC1 == playerC2:
 			strategyChoice = softStrategyList[Count - 13][dealerC1 - 2]
 		else:
 			strategyChoice = hardStrategyList[19 - playerC1 - playerC2][dealerC1 - 2]
-		RecursiveDecision(strategyChoice)
+		playerResult2 = RecursiveDecision(strategyChoice)
 	else:
-		RecursiveDecision(strategyChoice)
+		playerResult = RecursiveDecision(strategyChoice)
 		
 			
 
@@ -123,16 +125,14 @@ if playerC1 == playerC2:
 ####################### soft case #######################
 elif playerC1 == "A" or playerC2 == "A":
 	strategyChoice = softStrategyList[playerC2 + playerC1 - 13][dealerC1 - 2]
-	RecursiveDecision(strategyChoice)
+	playerResult = RecursiveDecision(strategyChoice)
 
 ####################### hard case #######################
 else:
 	strategyChoice = hardStrategyList[19 - playerC1 - playerC2][dealerC1 - 2]
-	RecursiveDecision(strategyChoice)
+	playerResult = RecursiveDecision(strategyChoice)
 
-# Calculating Points, note that supposeWin of game 2 in the split case is supposeWin
-points = points + supposeWin + supposeWin1
-numGames += 1
+
 
 
 	
