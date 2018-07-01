@@ -1,7 +1,6 @@
 import random
 
 ###### Start of the game
-points = 0
 numGames = 0
 
 deck = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10,
@@ -94,7 +93,8 @@ else:
 	dealerResult = RecursiveHit(Count)
 
 	
-	
+# Calculating Points, note that supposeWin of game 2 in the split case is supposeWin
+
 	
 #Compare
 if playerResult > 21:
@@ -111,13 +111,53 @@ else:
 		playerWinCount += supposeWin
 	elif playerResult < dealerResult:
 		print("Player Lose!")
-		playerWinCount -= supposeWin
+		playerWinCount = supposeWin
 	else:
 		print("Push!")
 		
+		
+# Compare game 1 in split case		
+if playerResult1 > 21:
+	print("Player Lose Game 1!")
+	playerWinCount -= supposeWin #depends on player's previous choice;
+
+elif dealerResult >21:
+	print ("Player Win Game 1!")
+	playerWinCount += supposeWin
+	
+else:
+	if playerResult1 > dealerResult:
+		print ("Player Win Game 1!")
+		playerWinCount += supposeWin
+	elif playerResult1 < dealerResult:
+		print("Player Lose Game 1!")
+		playerWinCount = supposeWin
+	else:
+		print("Game 1 Push!")
+
+		
+# Compare game 2 in split case		
+if playerResult2 > 21:
+	print("Player Lose Game 2!")
+	playerWinCount -= supposeWin #depends on player's previous choice;
+
+elif dealerResult >21:
+	print ("Player Win Game 2!")
+	playerWinCount += supposeWin
+	
+else:
+	if playerResult2 > dealerResult:
+		print ("Player Win Game 2!")
+		playerWinCount += supposeWin
+	elif playerResult2 < dealerResult:
+		print("Player Lose Game 2!")
+		playerWinCount = supposeWin
+	else:
+		print("Game 2 Push!")
+		
 usedDeck += pendingDeck
 pendingDeck = []
-		
+numGames += 1	
 	
 	
 	
