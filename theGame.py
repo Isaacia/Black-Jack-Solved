@@ -36,7 +36,7 @@ def RecursiveHit(sum)
 	if sum >= 17:
 		return sum
 	else:
-		return RecursiveHit(sum.Hit())
+		return RecursiveHit(Hit())
 
 def checkRunout()
 	if deck == []:
