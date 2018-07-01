@@ -3,7 +3,6 @@ countA = 0
 playerResult = 0
 Count = 0
 supposeWin1 = 0
-supposeWin2 = 0
 strategyChoice = "S"
 
 doubleStrategyList = [["P", "P", "P", "P", "P", "P", "H", "H", "H", "H"],
@@ -114,7 +113,6 @@ if playerC1 == playerC2:
 		else:
 			strategyChoice = hardStrategyList[19 - playerC1 - playerC2][dealerC1 - 2]
 		RecursiveDecision(strategyChoice)
-		supposeWin2 = supposeWin
 	else:
 		RecursiveDecision(strategyChoice)
 		
@@ -131,6 +129,11 @@ elif playerC1 == "A" or playerC2 == "A":
 else:
 	strategyChoice = hardStrategyList[19 - playerC1 - playerC2][dealerC1 - 2]
 	RecursiveDecision(strategyChoice)
+
+# Calculating Points, note that supposeWin of game 2 in the split case is supposeWin
+points = points + supposeWin + supposeWin1
+numGames += 1
+
 
 	
 	
